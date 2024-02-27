@@ -10,16 +10,16 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class InvoiceManager {
-    private static List<Invoice> invoices = new ArrayList<>();
+    private static final List<Invoice> invoices = new ArrayList<>();
 
-    private static Map<String, Company> companies = new HashMap<>();
+    private static final Map<String, Company> companies = new HashMap<>();
 
-    public static void addInvoice(Invoice invoice) {
-        invoices.add(invoice);
+    public static void addInvoices(List<Invoice> invoice) {
+        InvoiceManager.invoices.addAll(invoice);
     }
 
-    public static void addCompany(Company company) {
-        companies.put(company.getName(), company);
+    public static void addCompanies(List<Company> company) {
+        company.forEach(c -> companies.put(c.getName(), c));
     }
 
     public static void addInvoiceToCompany(String companyName, Invoice invoice) {

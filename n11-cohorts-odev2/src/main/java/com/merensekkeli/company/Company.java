@@ -7,13 +7,11 @@ import java.util.Set;
 
 public class Company {
 
-    private final Long id;
     private String name;
     private String sector;
     private Set<Invoice> invoices;
 
-    public Company(Long id, String name, String sector) {
-        this.id = id;
+    public Company(String name, String sector) {
         this.name = name;
         this.sector = sector;
         this.invoices = new HashSet<>();
@@ -21,10 +19,6 @@ public class Company {
 
     public void addInvoice(Invoice invoice) {
         invoices.add(invoice);
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {
