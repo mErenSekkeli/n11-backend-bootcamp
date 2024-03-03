@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/weather")
+@RequestMapping("/api/weather")
 public class WeatherController {
 
     private final WeatherService weatherService;
@@ -19,11 +19,11 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-    @GetMapping("/current")
-    public ResponseEntity<?> getCurrentWeather(@RequestParam String city,
-                                               @RequestParam(defaultValue = "metric") String units,
-                                               @RequestParam(defaultValue = "tr") String lang) {
-        return ResponseEntity.ok(weatherService.getDailyWeather(city, units, lang));
+    @GetMapping("/period")
+    public ResponseEntity<?> getCurrentWeather(@RequestParam String location,
+                                               @RequestParam String startDate,
+                                               @RequestParam(required = false) String endDate) {
+        return ResponseEntity.ok(weatherService.getPeriodWeatherData(location, startDate, endDate));
     }
 
 }
